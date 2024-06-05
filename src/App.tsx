@@ -1,5 +1,7 @@
 import './App.scss'
 import ComingSoon from './components/ComingSoon/ComingSoon';
+import BarChart from './components/Graphs/BarChart/BarChart';
+import DonutChart from './components/Graphs/DonutChart/DonutChart';
 
 function App() {
 
@@ -10,6 +12,8 @@ function App() {
         <h2>🎵Look at this graph🎵</h2>
         <sub>Exploratory work and new technology experimentation with the <a href="https://d3js.org/" target="_blank">D3 Library</a></sub>
         <ComingSoon />
+        <BarChart />
+        <DonutChart />
       </section>
     </>
   )
