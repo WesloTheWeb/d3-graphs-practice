@@ -1,0 +1,28 @@
+@import './variables.scss';
+
+body {
+    font-size: 16px;
+    background-color: $backgroundColor;
+    color: $textValueColor;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: goldenrod;
+    font-weight: bold;
+}
+
+a:hover {
+    color: gold;
+}
+
+h1 {
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 5rem;
+    color: $siteHeaderColor;
+}
+
+.comingSoon {
+    color: red;
+    font-weight: bold;
+}

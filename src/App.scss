@@ -1,0 +1,10 @@
+@import './variables.scss';
+
+.introContainer {
+    margin: 0 auto;
+    text-align: center;
+
+    sub {
+        color: $numberValueColor;
+    }
+}
