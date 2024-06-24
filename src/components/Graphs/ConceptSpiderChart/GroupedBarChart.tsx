@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 
+// ? This is taking in multiple responses from a "type" of student and then combining data
 const studentsResponses = {
   "Chinese Student": [
     Array.from({ length: 24 }, () => Math.floor(Math.random() * 4)),
@@ -35,6 +36,9 @@ const studentsResponses = {
     Array.from({ length: 24 }, () => Math.floor(Math.random() * 4))
   ]
 };
+
+// ! Would an individual student score matter if we are not collecting identifiable information?
+// ! and just want to know how that demographic feel the sense of community? Ask Albert.
 
 const subscales = [
   "Reinforcement of Needs",
