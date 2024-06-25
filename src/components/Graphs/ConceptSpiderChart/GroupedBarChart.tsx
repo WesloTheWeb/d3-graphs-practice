@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 
-// ? This is taking in multiple responses from a "type" of student and then combining data
 const studentsResponses = {
   "Chinese Student": [
     Array.from({ length: 24 }, () => Math.floor(Math.random() * 4)),
@@ -37,9 +36,6 @@ const studentsResponses = {
   ]
 };
 
-// ! Would an individual student score matter if we are not collecting identifiable information?
-// ! and just want to know how that demographic feel the sense of community? Ask Albert.
-
 const subscales = [
   "Reinforcement of Needs",
   "Membership",
@@ -57,7 +53,7 @@ const processDataForGroupedBar = (responses) => {
       });
       return acc;
     }, {});
-    
+
     subscales.forEach(subscale => {
       aggregatedData[subscale] /= answersList.length;
     });
@@ -76,15 +72,15 @@ const GroupedBarChart: React.FC = () => {
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
-    const width = 800;
-    const height = 500;
-    const margin = { top: 50, right: 150, bottom: 50, left: 50 };
+    const width = 1000;
+    const height = 600;
+    const margin = { top: 50, right: 150, bottom: 100, left: 50 };
 
     svg
-      .attr('width', width)
+      // .attr('width', width)
       .attr('height', height)
-      .style('background', '#f0f0f0')
-      .style('margin', '50px')
+      .style('background', '#f9f9f9')
+      .style('width', '100%')
       .style('overflow', 'visible');
 
     const x0 = d3
@@ -127,7 +123,10 @@ const GroupedBarChart: React.FC = () => {
 
     svg.append("g")
       .attr("transform", `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(x0).tickSizeOuter(0));
+      .call(d3.axisBottom(x0).tickSizeOuter(0))
+      .selectAll("text")
+      .attr("transform", "rotate(-45)")
+      .attr("text-anchor", "end");
 
     svg.append("g")
       .attr("transform", `translate(${margin.left},0)`)
@@ -138,10 +137,10 @@ const GroupedBarChart: React.FC = () => {
       .attr('x', width / 2)
       .attr('y', margin.top / 2)
       .attr('text-anchor', 'middle')
-      .style('font-size', '20px')
+      .style('font-size', '24px')
       .style('font-weight', 'bold')
       .style('fill', 'black')
-      .text('Sense of Community Index Scores Comparison');
+      .text('Sense of Community Index Subscale Scores');
 
     // Add legend
     const legend = svg.append('g')
@@ -165,7 +164,7 @@ const GroupedBarChart: React.FC = () => {
       .attr('y', (d, i) => i * 20 + 9)
       .attr('dy', '0.35em')
       .text(d => d)
-      .style('font-size', '12px')
+      .style('font-size', '14px')
       .style('fill', 'black');
 
   }, []);
