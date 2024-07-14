@@ -5,6 +5,8 @@ import ConceptBarChart from './components/Graphs/ConceptBarChart/ConceptBarChart
 import ConceptSpiderChart from './components/Graphs/ConceptSpiderChart/ConceptSpiderChart';
 import GroupedBarChart from './components/Graphs/ConceptSpiderChart/GroupedBarChart';
 import DonutChart from './components/Graphs/DonutChart/DonutChart';
+import ScatterPlot from './components/Graphs/ScatterChart/DemoScatterChart';
+import ScatterPlotOther from './components/ScatterPlotOthers/ScatterPlotOthers';
 
 function App() {
 
@@ -22,6 +24,9 @@ function App() {
       <h3>Spider Chart</h3>
       {/* <ConceptSpiderChart /> */}
       <GroupedBarChart />
+      <h3>Scatter Plot</h3>
+      <ScatterPlot />
+      <ScatterPlotOther />
     </>
   )
 };

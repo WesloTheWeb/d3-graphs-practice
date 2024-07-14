@@ -43,12 +43,14 @@ const subscales = [
   "Shared Emotional Connection"
 ];
 
+const responseLevels = ["Not at All", "Somewhat", "Mostly", "Completely"];
+
 const processDataForGroupedBar = (responses) => {
   return Object.entries(responses).map(([demographic, answersList]) => {
     const aggregatedData = answersList.reduce((acc, answers) => {
       subscales.forEach((subscale, i) => {
         const subscaleAnswers = answers.slice(i * 6, (i + 1) * 6);
-        const subscaleScore = subscaleAnswers.reduce((a, b) => a + b, 0);
+        const subscaleScore = subscaleAnswers.reduce((a, b) => a + b, 0) / 6; // Average score per subscale
         acc[subscale] = (acc[subscale] || 0) + subscaleScore;
       });
       return acc;
@@ -74,13 +76,13 @@ const GroupedBarChart: React.FC = () => {
     const svg = d3.select(svgRef.current);
     const width = 1000;
     const height = 600;
-    const margin = { top: 50, right: 150, bottom: 100, left: 50 };
+    const margin = { top: 50, right: 150, bottom: 100, left: 100 };
 
     svg
-      // .attr('width', width)
+      .attr('width', width)
       .attr('height', height)
       .style('background', '#f9f9f9')
-      .style('width', '100%')
+      .style('margin', '50px')
       .style('overflow', 'visible');
 
     const x0 = d3
@@ -97,7 +99,7 @@ const GroupedBarChart: React.FC = () => {
 
     const y = d3
       .scaleLinear()
-      .domain([0, d3.max(groupedBarData, d => d3.max(subscales, key => d[key])) as number])
+      .domain([0, 3]) // Adjust y-axis to scale from 0 to 3
       .nice()
       .range([height - margin.bottom, margin.top]);
 
@@ -130,7 +132,9 @@ const GroupedBarChart: React.FC = () => {
 
     svg.append("g")
       .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y)
+        .ticks(4)
+        .tickFormat((d, i) => responseLevels[i])); // Custom tick format for y-axis
 
     // Add header
     svg.append('text')
