@@ -6,7 +6,11 @@ import ConceptSpiderChart from './components/Graphs/ConceptSpiderChart/ConceptSp
 import GroupedBarChart from './components/Graphs/ConceptSpiderChart/GroupedBarChart';
 import DonutChart from './components/Graphs/DonutChart/DonutChart';
 import ScatterPlot from './components/Graphs/ScatterChart/DemoScatterChart';
+import SpecificGroupedBarChart from './components/Graphs/SpecificGraphs/BarSpecific';
+import SpecificScatterChart from './components/Graphs/SpecificGraphs/ScatterSpecific';
 import ScatterPlotOther from './components/ScatterPlotOthers/ScatterPlotOthers';
+import GroupedBarChartByYear from './components/Year/GroupedBarChartByYear';
+import ScatterPlotByYear from './components/Year/ScatterPlotByYear';
 
 function App() {
 
@@ -27,6 +31,12 @@ function App() {
       <h3>Scatter Plot</h3>
       <ScatterPlot />
       <ScatterPlotOther />
+      <h2>EXPERIMENTAL</h2>
+      <SpecificGroupedBarChart />
+      <SpecificScatterChart />
+      <h2>Custom Examples</h2>
+      <GroupedBarChartByYear />
+      <ScatterPlotByYear />
     </>
   )
 };
